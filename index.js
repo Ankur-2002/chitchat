@@ -20,7 +20,7 @@ app.use(helmet());
 app.use(morgan('common'));
 app.use(express.urlencoded({extended : true}))
 // console.log(process.env.REACT_APP_PUBLIC_FOLDER)
-mongoose.connect(process.env.MONGO_URL,{useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true})
+mongoose.connect("mongodb+srv://Chitchat:Chitchat@chitchat.lpgwo.mongodb.net/Chitchat?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true})
 .then(()=>{
     console.log('database is visible')
   

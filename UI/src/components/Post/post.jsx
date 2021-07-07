@@ -21,7 +21,7 @@ const Post =({data}) =>{
     },[data.likes,user._id]);
     useEffect(()=>{
         const fetch_data = async () =>{
-            const update = await axios.get(`api/user/get/?userId=${data.userId}`);
+            const update = await axios.get(`/api/user/get/?userId=${data.userId}`);
             setinfo(update.data); 
         }
         fetch_data();
@@ -30,7 +30,7 @@ const Post =({data}) =>{
     const Delete = async() =>{
         // console.log(data._id)
         try {
-            await axios.delete(`api/post/${data._id}/delete/${user._id}`);            
+            await axios.delete(`/api/post/${data._id}/delete/${user._id}`);            
             window.location.reload()
         } catch (error) {
             console.log(error)
@@ -39,7 +39,7 @@ const Post =({data}) =>{
     }
     const Likehandler = async () =>{ 
         try {
-             await axios.put(`api/post/${data._id}/like`,{userId : user._id}); 
+             await axios.put(`/api/post/${data._id}/like`,{userId : user._id}); 
              if(like){
              settotallikes(totallikes+1)
              setlike(false);

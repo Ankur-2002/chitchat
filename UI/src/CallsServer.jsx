@@ -5,7 +5,7 @@ const CallsServer = async (user , dispatch) =>{
     dispatch({type : "START_LOGIN"});
 
     try {  
-       const res = await axios.post('api/auth/login',user); 
+       const res = await axios.post('/api/auth/login',user); 
        localStorage.setItem("user",JSON.stringify(res));
        dispatch({type : "FETCHING_SUCCESSFULL", payload : res.data});  
 
