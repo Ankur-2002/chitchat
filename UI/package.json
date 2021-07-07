@@ -1,9 +1,9 @@
 {
   "name": "chitchat",
   "version": "0.1.0",
-  "private": true 
-   
-  ,
+  "private": true, 
+  
+  
   "dependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",

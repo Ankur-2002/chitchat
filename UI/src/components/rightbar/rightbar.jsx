@@ -22,7 +22,7 @@ function Rightbar({data}) {
     const fetch = async ()=>{  
     try {
         const id = data._id;
-        const datas = await axios.get("/api/user/allfriends/"+id);
+        const datas = await axios.get("api/user/allfriends/"+id);
         setfriends(datas.data)  
         // dispatch({})
     } catch (error) {
@@ -43,14 +43,14 @@ function Rightbar({data}) {
         try {
             if(Follow)
             {
-                await axios.put(`/api/user/${data._id}/unfollow`,{userId : user._id})
+                await axios.put(`api/user/${data._id}/unfollow`,{userId : user._id})
                 dispatch({type : "UnFollow" , payload : data._id})
                 setFollow(false);
 
             }
             else    
             {
-            await axios.put(`/api/user/${data._id}/follow`,{userId : user._id}) 
+            await axios.put(`api/user/${data._id}/follow`,{userId : user._id}) 
             dispatch({type : "Follow" , payload : data._id});
             setFollow(true);
             }

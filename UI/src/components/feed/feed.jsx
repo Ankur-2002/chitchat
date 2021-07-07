@@ -12,8 +12,8 @@ function Feed(props) {
     useEffect(()=>{
         const fetch = async ()=>{
             const res = props.username ? 
-            await axios.get(`/api/post/allpost/${props.username}`): // 
-            await axios.get(`/api/post/timeline/${user._id}`); // When user Login, then all timelines are fetch
+            await axios.get(`api/post/allpost/${props.username}`): // 
+            await axios.get(`api/post/timeline/${user._id}`); // When user Login, then all timelines are fetch
             setdata(res.data.sort((p1,p2)=>{ // sort all post as per the created date 
                 return new Date(p2.createdAt) - new Date(p1.createdAt);
             }))

@@ -12,7 +12,7 @@ const Register = () =>{
         password : document.getElementById('password').value,
         email : document.getElementById("email").value
         }
-        await axios.post('/api/auth/register',user);
+        await axios.post('api/auth/register',user);
         history.push("/login")
         }
 
