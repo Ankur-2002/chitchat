@@ -1,0 +1,27 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test" : "echo \"Error: no test specified\" && exit 1 ",
+    "start": "node index.js",
+    "build" : "cd UI && npm run build",
+    "install-UI": "cd UI && npm install",
+    "heroku-postbuild":"npm run install-UI && npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "mongoose": "^5.12.14",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.9",
+    "path": "^0.12.7",
+    "react-router-dom": "^5.2.0"
+  }
+}

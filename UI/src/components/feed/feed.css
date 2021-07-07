@@ -1,0 +1,7 @@
+.feed{
+    flex: 6.5;
+    /* height: calc(100vh - 60px); */
+    background-color: #f0f2f5;
+    
+    /* overflow-y: scroll; */
+}

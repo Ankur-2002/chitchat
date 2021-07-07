@@ -1,0 +1,85 @@
+.sidebar{
+    flex: 3;
+    /* text-align: center; */
+    height: calc(100vh - 60px);
+    
+    overflow-y: scroll;
+    position: sticky;
+    top: calc(60px);
+}
+::-webkit-scrollbar{
+    width: 5px;
+} 
+
+    ::-webkit-scrollbar-track{
+        background-color: #f1f1f1f1;
+}
+    ::-webkit-scrollbar-thumb{
+        background-color: rgb(178,179,179);
+    } 
+.sidebardata {
+padding:0px;
+list-style: none;
+}
+.sidebardata  li{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 15px;
+}
+.sidebardata  li:hover{
+    background-color: rgb(214, 214, 214);
+    /* border-radius: 50px; */
+}
+.ICON{
+    margin-right: 10px;
+}
+.Readmore{
+    display: flex;
+    justify-content: center;
+}
+.Readmore button{
+    padding: 5px 10px; 
+    cursor: pointer;
+    font: 15px 500;
+}
+.sidebarFriendList{
+    /* padding: 15px; */
+    /* display: flex; */
+    /* align-items: flex-start; */
+    /* flex-direction: column;  */
+    list-style: none;
+}
+.sidebarFriend{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+} 
+.sidebarFriend:hover{
+    background-color: rgb(207, 207, 207);
+}
+.friendimg{
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+.friendname{
+    font-size: 16px;
+    font-weight: 500;
+}
+.hr{
+    margin: 10px;
+}
+
+@media (max-width : 450px) {
+    .sidebar{
+        display: none;
+    } 
+    
+}
