@@ -1,12 +1,23 @@
  
 import './navbar.css';
 import {Search, Person, Chat , Notifications} from '@material-ui/icons'
-import { Link } from 'react-router-dom';
+import { Link,  useHistory} from 'react-router-dom';
 import { useContext } from 'react';
-import { Context } from '../Context/Context';
-function Navbar() {
+import { Context } from '../../Context/Context';
+import $ from 'jquery';
 
+function Navbar() {
+    const history= useHistory();
     const {user} = useContext(Context);
+    const Logout = () =>{
+           window.localStorage.removeItem("user");
+           history.push('/') 
+           window.location.reload()
+    }   
+    const show = () =>
+    {
+        
+    }
 
     return (
         <div className="topbarContainer"> 
@@ -32,10 +43,16 @@ function Navbar() {
                 
                 <div className="topbarIcons">
                 
-                <div className="topbarIconitems">
-                <Link to={`/profile/${user.username}`} style={{textDecoration:"none"}}>
-                <img  src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} alt="" className="topbarImg" />          
-                </Link>
+                <div className="topbarIconitems" onClick={show}>
+                <img  src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} alt="" className="topbarImg"  />          
+                <ul className="topbarmenus">
+                    <li>
+                    <Link to={`/profile/${user.username}`} style={{textDecoration:"none"}}>Profile</Link> 
+                    </li>
+                    <li onClick={Logout}>Logout</li>
+                    <li><Link to="/">Home</Link></li>
+                </ul>
+                
                 </div>
                     <div className="topbarIconitems">
                         <Person/>

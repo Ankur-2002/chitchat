@@ -1,5 +1,5 @@
  
-import Navbar from '../components/navbar'
+import Navbar from '../components/navbar/Navbar'
 import Sidebar from '../components/sidebar/sidebar'
 import Rightbar from '../components/rightbar/rightbar'
 import Feed from '../components/feed/feed';

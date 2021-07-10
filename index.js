@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 
 // middleware
 app.use("/images",express.static(path.join(__dirname,'server/images')));
-app.use(express.static('UI/build'));
+// app.use(express.static('UI/build'));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
@@ -45,7 +45,7 @@ app.post("/api/upload",upload.single("file"),(req,res)=>{
     try {
      res.status(200).json("Successfull upload")
     }catch (error) {
-    console.log(error)
+    // console.log(error)
 }
 })
 
@@ -56,13 +56,9 @@ app.listen(port, ()=>{
 
 if(process.env.NODE_ENV === 'production')
 {
-    app.use(express.static('/UI/build'))
+    app.use(express.static('UI/build'))
 }
-// app.use(function(req, res) {
-// 	res.sendFile(path.join(__dirname, '/UI/build/'));
-// });
-
-// console.log(1);
+ 
 app.use('/api/user',userrouter);
 app.use("/api/auth",Authroute);
 app.use("/api/post",postroute);

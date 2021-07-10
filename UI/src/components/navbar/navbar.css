@@ -34,6 +34,27 @@
     border-radius: 50%;
     object-fit: cover;
 }
+ 
+.topbarmenus{
+    /* display: none; */
+    position:absolute;
+    background-color: #f9f9f9f9; 
+    /* color: #5179ce; */
+    list-style: none;
+    padding: 5px;
+    border-radius: 10px;
+    left: -15px;
+}
+.topbarmenus li{
+    /* padding: 1px; */
+    color: #5179ce;
+    font-size: 17px;
+    margin: 3px 5px 0px 5px;
+}
+.topbarmenus a{
+    color: #5179ce;
+    text-decoration: none;
+}
 .logo{
     font-size : 22px;
     font-weight: bold;
@@ -73,7 +94,6 @@
     margin-right: 15px; 
     cursor: pointer;
     color: white;
-
 }   
 .topbarIconbadge{
     position:absolute;

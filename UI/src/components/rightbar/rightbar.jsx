@@ -14,8 +14,8 @@ function Rightbar({data}) {
 
 //    console.log(user)
     useEffect(()=>{
-       if(data !== undefined) 
-       setFollow(user.following.includes(data._id)) 
+     console.log(data)
+       data && setFollow(user.following.includes(data._id)) 
        
     },[data])
    useEffect(()=>{
@@ -24,7 +24,6 @@ function Rightbar({data}) {
         const id = data._id;
         const datas = await axios.get("/api/user/allfriends/"+id);
         setfriends(datas.data)  
-        // dispatch({})
     } catch (error) {
         console.log(error)
     }

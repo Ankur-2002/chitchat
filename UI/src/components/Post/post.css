@@ -72,14 +72,40 @@
 .hrTag{
     margin: 5px 0;
 }
-.verticalicon:hover ul li{
-    display: block;
-    color: red;
-  }
-
+.optionsforpost{
+    position: relative; 
+    width: 100%;
+    height: 100%;
+    /* padding: 10px; */
+}
 .verticalicon{
-    margin-right: 10px;
     cursor: pointer;
+}
+.ulforpost{
+    background-color: #ffffff; 
+    list-style-type: none; 
+    position:absolute;
+    top: -10px;
+    right: 0;
+    left: -150px;
+    text-align: center;
+    margin-top: 10px;
+    background: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 4px;
+    border-radius: 2px;
+} 
+.ulforpost li{
+    /* margin-bottom: 10px; */
+    padding : 3px;
+    font-size: 18px;
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    font-weight: 400;
+    border-bottom: 1px solid rgb(82, 81, 81);
+    cursor: pointer;
+}
+.ulforpost li:hover{
+    background:#d8d9e4;
 }
 .centerimg{
     width: 100%; 

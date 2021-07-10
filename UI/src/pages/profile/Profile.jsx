@@ -1,5 +1,5 @@
 import  {useState,useEffect} from 'react'
-import Navbar from '../../components/navbar'
+import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/sidebar'
 import Rightbar from '../../components/rightbar/rightbar'
 import Feed from '../../components/feed/feed';
@@ -20,7 +20,7 @@ import { useParams } from 'react-router-dom'
             console.log(param)
             const user = await axios.get(`/api/user/get/?username=${param.username}`)
             setdata(user.data); 
-            console.log(user.data)
+            // console.log(user.data)
         }
         fetch_user();
     },[param]);

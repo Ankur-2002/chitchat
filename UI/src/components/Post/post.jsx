@@ -9,9 +9,10 @@ import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineO
 import {format} from 'timeago.js'
 import axios from 'axios' 
 import { Context } from '../../Context/Context';
-
+import $ from 'jquery'
 const Post =({data}) =>{ 
-  
+    
+    const [option ,setoption] = useState(false);
     const {user} = useContext(Context);
     const [info , setinfo] = useState({});
     const [like,setlike] = useState(false);
@@ -30,7 +31,14 @@ const Post =({data}) =>{
     const Delete = async() =>{
         // console.log(data._id)
         try {
-            await axios.delete(`/api/post/${data._id}/delete/${user._id}`);            
+            await axios.delete(`/api/post/${data._id}/delete/${user._id}`);                
+            if(!option){
+                setoption(true)
+            }
+            else
+            {
+                setoption(false)
+            }
             window.location.reload()
         } catch (error) {
             console.log(error)
@@ -53,7 +61,14 @@ const Post =({data}) =>{
             console.log(error)
         }
     }
-    
+    const Showuser = () =>{  
+            if(!option) { 
+            setoption(true)    
+            }
+            else{ 
+            setoption(false)
+            }
+    }
     
 
     return (
@@ -77,10 +92,13 @@ const Post =({data}) =>{
                     </div>
                     
                     <div className="posttopright">
-                    <MoreHorizIcon className="verticalicon" />
+                    <MoreHorizIcon className="verticalicon" id="verticalicon" onClick={Showuser}/>
                     <div className="optionsforpost" >
-                        <ul className="ulforpost">
+                        <ul className="ulforpost" style={{display : (!option) ? "none" : "block"}}>
                             <li onClick={Delete}>Delete</li>
+                            <li onClick={Showuser}><Link to={`/profile/${info.username}`} >Profile</Link></li>
+                            <li onClick={Showuser}>Get</li>
+                            <li onClick={Showuser}>Check</li>
                         </ul>
                     </div>
                     </div>

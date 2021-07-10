@@ -1,8 +1,6 @@
 import Home from './pages/Home';
 import {BrowserRouter,Switch,Route, Redirect} from 'react-router-dom'
-import Login from './components/Entry/login';
-// import {person} from '@material-ui/icons'
-// import Entry from './components/Entry/Entry';
+import Login from './components/Entry/login'; 
 import Register from './components/Entry/Register';
 import Profile from './pages/profile/Profile';
 import { useContext } from 'react';
@@ -10,7 +8,7 @@ import { Context } from './Context/Context';
 
 function App() {
   const {user} = useContext(Context);
-  console.log(user)
+  // console.log(user)
   return ( 
     <> 
     <BrowserRouter>   
