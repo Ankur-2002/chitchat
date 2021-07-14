@@ -96,7 +96,7 @@ router.get('/allfriends/:userId',async (req,res)=>{
 // Follow a User
 router.put('/:id/follow', async(req,res)=>{
     console.log(req.body.userId)
-   
+    console.log(req.params.id) 
     if(req.body.userId !== req.params.id)
     {
         try {

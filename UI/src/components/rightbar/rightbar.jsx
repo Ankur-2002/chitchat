@@ -1,8 +1,7 @@
 import "./rightbar.css";
 import { useContext, useEffect, useState } from "react";
 import { friends } from "../sidebar/sidedata"
-import $ from 'jquery'
-import { Link } from "react-router-dom";
+import $ from 'jquery' 
 import { Context } from "../../Context/Context";
 import axios from "axios"; 
 function Rightbar({data}) {
@@ -10,18 +9,17 @@ function Rightbar({data}) {
    const {user , dispatch} = useContext(Context);  
     
    const [friend,setfriends] = useState([]);
-   const [Follow,setFollow] = useState();
+   const [Follow,setFollow] = useState(false);
 
 //    console.log(user)
-    useEffect(()=>{
-     console.log(data)
-       data && setFollow(user.following.includes(data._id)) 
-       
+    useEffect(()=>{ 
+    data && data._id !== user._id &&  setFollow(user.following.includes(data._id))  
     },[data])
+    
    useEffect(()=>{
     const fetch = async ()=>{  
     try {
-        const id = data._id;
+        var id = (data)?data._id : user._id;
         const datas = await axios.get("/api/user/allfriends/"+id);
         setfriends(datas.data)  
     } catch (error) {
@@ -42,14 +40,13 @@ function Rightbar({data}) {
         try {
             if(Follow)
             {
-                await axios.put(`/api/user/${data._id}/unfollow`,{userId : user._id})
+                await axios.put(`/api/user/${data._id}/unfollow`,{userId : user._id});
                 dispatch({type : "UnFollow" , payload : data._id})
                 setFollow(false);
-
             }
             else    
             {
-            await axios.put(`/api/user/${data._id}/follow`,{userId : user._id}) 
+            await axios.put(`/api/user/${data._id}/follow`,{userId : user._id});
             dispatch({type : "Follow" , payload : data._id});
             setFollow(true);
             }
@@ -74,15 +71,15 @@ function Rightbar({data}) {
 
         <div className="friend_status">
 
-        {
-            friends.map((value,index)=>{
-            return (  <div key={index} className="friends_status">
-            <img src={value.profile} width="32" height="32" className="status_img" alt="new" />
-            <span className="mytext">{value.name}</span>
-        </div>
-            )
+        {friend.length > 0 && friend.map((value , index)=>{
+                return (
+                <div className="rightbarfollowings" key={value._id}>
+                 <img width="32" height="32" src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} alt="soory" className="following_img" />
+                 <span className="follwing_name"  >{value.username}</span>
+                 </div>  
+                )
             })
-        } 
+        }
         </div>
 
         </div>
@@ -132,12 +129,12 @@ const PROFILE_BAR = () =>{
 
             {friend.length > 0 && friend.map((value , index)=>{
                 return (
-                <Link to={`/profile/${value.username}`} style={{color:"black",fontWeight:"500",textDecoration:"none"}}>
+                <a href={`/profile/${value.username}`} style={{color:"black",fontWeight:"500",textDecoration:"none"}}>
                 <div className="rightbarfollowings" key={value._id}>
                  <img width="32" height="32" src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} alt="soory" className="following_img" />
                  <span className="follwing_name"  >{value.username}</span>
                  </div> 
-                 </Link>
+                 </a>
                 
                 )
             })
@@ -154,7 +151,7 @@ const PROFILE_BAR = () =>{
         <div className="rightbar">
            <div className="wrapper">
             {
-            (data === undefined) ? <HOME_RIGHT_BAR/> : <PROFILE_BAR/>
+            (data === undefined) ? <HOME_RIGHT_BAR key={1}/> : <PROFILE_BAR key={2}/>
             }
            </div>
         </div>

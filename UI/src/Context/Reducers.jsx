@@ -32,11 +32,14 @@ const Reducer =  (initial_state , action) => {
                 ...initial_state,
                 user:{
                     ...initial_state.user,
-                    following : initial_state.user.following.filter((id) => id !== action.payload),
+                    following : initial_state.user.following.filter((id,key)=>id!==action.payload)
                     }
-            });
+                });
         default : 
-        return (initial_state);
+        return (
+            {
+                ...initial_state
+            });
     }
 
 }

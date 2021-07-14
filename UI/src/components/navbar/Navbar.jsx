@@ -2,34 +2,56 @@
 import './navbar.css';
 import {Search, Person, Chat , Notifications} from '@material-ui/icons'
 import { Link,  useHistory} from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Context } from '../../Context/Context';
-import $ from 'jquery';
+import $ from 'jquery'; 
 
 function Navbar() {
     const history= useHistory();
+    const [open , setview] = useState(false);
     const {user} = useContext(Context);
+    const [menu , viewmenu] = useState(false);
+    const [search, update] = useState("");
     const Logout = () =>{
            window.localStorage.removeItem("user");
            history.push('/') 
            window.location.reload()
     }   
     const show = () =>
-    {
-        
+    {  
+        if(!open){
+        $(".topbarmenus").css({"display" : "Block"})
+        }
+        else{
+        $(".topbarmenus").css({"display" : "none"})
+        }
+        setview(!open);
     }
-
+    const setmenu = () =>{
+        if(!menu){
+        $(".sidebar").css({"display" : "block"});
+        $(".post").css({"display":"none"})
+        }
+        else
+        $(".sidebar").css({"display" : "none"})
+        viewmenu(!menu);
+    }   
     return (
-        <div className="topbarContainer"> 
+        <div className="topbarContainer" > 
+             <div className="hamburger" onClick={setmenu}>
+                 <span className="ham1"></span>
+                 <span className="ham2"></span>
+                 <span className="ham3"></span>
+            </div>
             <div className="topbarLeft">
             <Link to="/" style={{textDecoration:"none"}}>
             <span className="logo">ChitChat</span>
             </Link>
             </div>
             <div className="topbarcenter">
-                <div className="searchbar">
-                <Search className="searchbar-icon"/>
-                <input placeholder="Search for friend , Post or video" className="searchInput"></input>
+                <div className="searchbar"> 
+                <Link to={`/profile/${search}`}><Search className="searchbar-icon"/></Link>
+                <input placeholder="Search for friend , Post or video"  onChange={(e)=>update(e.target.value)} className="searchInput"></input>
                 </div>
                  
             </div>

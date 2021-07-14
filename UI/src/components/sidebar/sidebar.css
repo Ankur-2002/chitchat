@@ -79,7 +79,12 @@ list-style: none;
 
 @media (max-width : 450px) {
     .sidebar{
-        display: none;
+        display: none; 
+        position:absolute;
+        z-index: 1000;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(178,179,179);
     } 
     
 }

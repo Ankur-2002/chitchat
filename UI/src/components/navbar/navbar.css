@@ -7,7 +7,7 @@
     position:sticky;
     top:0;
     background-color: #5179ce;
-    z-index: 9999999;
+    z-index: 9999999; 
 }
 
 .topbarLeft{
@@ -36,7 +36,7 @@
 }
  
 .topbarmenus{
-    /* display: none; */
+    display: none;
     position:absolute;
     background-color: #f9f9f9f9; 
     /* color: #5179ce; */
@@ -81,6 +81,7 @@
     border-radius: 25px;
 }
 .searchbar-icon{
+    cursor: pointer;
     margin-left: 5px;
     font-size: 20px !important;
 }
@@ -107,7 +108,40 @@
     text-align: center; 
     font-size: 12px;
 }
+.hamburger{
+    position: relative;
+    width: 30px;
+    display: none;
+}
+
+.ham1::before{
+    content:"";
+    width: 20px;
+    height: 3px;
+    position:absolute;
+    background-color: rgb(255, 255, 255);
+    top: -2px; 
+}
+.ham2::before{
+    content:"";
+    width: 20px;
+    height: 3px;
+    position:absolute;
+    background-color: rgb(255, 255, 255);
+    top: 3px; 
+}
+.ham3::before{
+    content:"";
+    width: 20px;
+    height: 3px;
+    position:absolute;
+    background-color: rgb(255, 255, 255);
+    top: -7px; 
+}
 @media (max-width : 420px) {
+    .hamburger{
+        display: block;
+    }
     .topbarContainer{
         height: 50px;
         width: calc(100% - 10px);

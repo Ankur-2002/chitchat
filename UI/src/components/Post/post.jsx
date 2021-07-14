@@ -104,7 +104,7 @@ const Post =({data}) =>{
                     </div>
                 </div>
                 </div>
-            <div className="descriptionn"> 
+            <div className="description"> 
             {/* now we did'n apply any css here */}
             <span>{data.desc}</span>
             </div>
