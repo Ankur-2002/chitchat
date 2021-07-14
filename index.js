@@ -8,6 +8,7 @@ const userrouter = require('./Router/Router');
 const Authroute = require('./Router/Auth.js');
 const postroute = require('./Router/post');
 const multer = require('multer');
+const cors = require('cors')
 const path = require('path'); 
 dotenv.config();
 const port = process.env.PORT || 3000;
@@ -22,7 +23,7 @@ app.use(express.urlencoded({extended : true}))
 
 
 
-const whitelist = ['http://localhost:3000', 'http://localhost:8080']
+const whitelist = ['http://localhost:3000', 'http://localhost:8080','https://newapp2002.herokuapp.com/' ]
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)
