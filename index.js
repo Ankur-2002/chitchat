@@ -19,6 +19,24 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
 app.use(express.urlencoded({extended : true}))
+
+
+
+const whitelist = ['http://localhost:3000', 'http://localhost:8080']
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions))
+
 // console.log(process.env.REACT_APP_PUBLIC_FOLDER)
 mongoose.connect("mongodb+srv://Chitchat:Chitchat@chitchat.lpgwo.mongodb.net/Chitchat?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true})
 .then(()=>{
