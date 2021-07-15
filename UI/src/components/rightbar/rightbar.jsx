@@ -4,6 +4,7 @@ import { friends } from "../sidebar/sidedata"
 import $ from 'jquery' 
 import { Context } from "../../Context/Context";
 import axios from "axios"; 
+import { Link } from "react-router-dom";
 function Rightbar({data}) { 
    const {user , dispatch} = useContext(Context);   
    const [friend,setfriends] = useState([]);
@@ -126,12 +127,12 @@ const PROFILE_BAR = () =>{
 
             {friend.length > 0 && friend.map((value , index)=>{
                 return (
-                <a href={`/profile/${value.username}`} style={{color:"black",fontWeight:"500",textDecoration:"none"}}>
+                <Link href={`/profile/${value.username}`} style={{color:"black",fontWeight:"500",textDecoration:"none"}}>
                 <div className="rightbarfollowings" key={value._id}>
                  <img width="32" height="32" src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} alt="soory" className="following_img" />
                  <span className="follwing_name"  >{value.username}</span>
                  </div> 
-                 </a>
+                 </Link>
                 
                 )
             })
