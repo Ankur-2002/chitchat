@@ -111,7 +111,9 @@ const Post =({data}) =>{
         
             <div className="postcenter">
             {
+            (data.img)?
             <img alt="sorry" className="centerimg" src={`/images/${data.img}`}></img>
+            :null
             }
             </div>
             <div className="postbottom">    
