@@ -7,8 +7,7 @@ import { useContext } from 'react';
 import { Context } from './Context/Context';
 
 function App() {
-  const {user} = useContext(Context);
-  // console.log(user)
+  const {user} = useContext(Context); 
   return ( 
     <> 
     <BrowserRouter>   

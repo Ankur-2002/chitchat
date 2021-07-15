@@ -20,7 +20,7 @@ function Navbar() {
     const show = () =>
     {  
         if(!open){
-        $(".topbarmenus").css({"display" : "Block"})
+        $(".topbarmenus").css({"display" : "block"})
         }
         else{
         $(".topbarmenus").css({"display" : "none"})
@@ -32,8 +32,11 @@ function Navbar() {
         $(".sidebar").css({"display" : "block"});
         $(".post").css({"display":"none"})
         }
-        else
+        else{
         $(".sidebar").css({"display" : "none"})
+        $(".post").css({"display":"block"})
+        }
+
         viewmenu(!menu);
     }   
     return (

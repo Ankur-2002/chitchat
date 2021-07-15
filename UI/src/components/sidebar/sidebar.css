@@ -2,7 +2,7 @@
     flex: 3;
     /* text-align: center; */
     height: calc(100vh - 60px);
-    
+
     overflow-y: scroll;
     position: sticky;
     top: calc(60px);
