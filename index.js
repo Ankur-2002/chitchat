@@ -8,41 +8,22 @@ const userrouter = require('./Router/Router');
 const Authroute = require('./Router/Auth.js');
 const postroute = require('./Router/post');
 const multer = require('multer');
-const cors = require('cors')
+ 
 const path = require('path'); 
 dotenv.config();
 const port = process.env.PORT || 3000;
 
 // middleware
 app.use("/images",express.static(path.join(__dirname,'server/images')));
-// app.use(express.static('UI/build'));
+  
 app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
 app.use(express.urlencoded({extended : true}))
-
-
-
-const whitelist = ['http://localhost:3000','https://newapp2002.herokuapp.com/' ]
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions))
-
-// console.log(process.env.REACT_APP_PUBLIC_FOLDER)
+ 
 mongoose.connect("mongodb+srv://Chitchat:Chitchat@chitchat.lpgwo.mongodb.net/Chitchat?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true})
 .then(()=>{
-    console.log('database is visible')
-  
+    console.log('database is visible') 
 })
 .catch((err)=>{
     console.log(err)
