@@ -5,10 +5,13 @@ import "./post.css"
 import PublicIcon from '@material-ui/icons/Public';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ClearIcon from '@material-ui/icons/Clear';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import {format} from 'timeago.js'
 import axios from 'axios' 
 import { Context } from '../../Context/Context';
+import { Person, Share } from '@material-ui/icons';
 // import $ from 'jquery'
 const Post =({data}) =>{ 
     
@@ -92,13 +95,13 @@ const Post =({data}) =>{
                     </div>
                     
                     <div className="posttopright">
-                    <MoreHorizIcon className="verticalicon" id="verticalicon" onClick={Showuser}/>
-                    <div className="optionsforpost" >
+                    {(!option)?
+                    <MoreHorizIcon className="verticalicon" id="verticalicon" onClick={Showuser}/>:<ClearIcon className="verticalicon" onClick={Showuser}/>
+                    }<div className="optionsforpost" >
                         <ul className="ulforpost" style={{display : (!option) ? "none" : "block"}}>
-                            <li onClick={Delete}>Delete</li>
-                            <li onClick={Showuser}><Link to={`/profile/${info.username}`} >Profile</Link></li>
-                            <li onClick={Showuser}>Get</li>
-                            <li onClick={Showuser}>Check</li>
+                            <li onClick={Delete}><DeleteIcon/>Delete</li>
+                            <li onClick={Showuser}><Person/><Link to={`/profile/${info.username}`} >Profile</Link></li>
+                            <li onClick={Showuser}><Share/>Share</li> 
                         </ul>
                     </div>
                     </div>

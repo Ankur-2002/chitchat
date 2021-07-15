@@ -1,6 +1,7 @@
  
 import './navbar.css';
-import {Search, Person, Chat , Notifications} from '@material-ui/icons'
+import {Search, Person, Chat,ExitToApp,Home,Notifications} from '@material-ui/icons'
+import PersonIcon from '@material-ui/icons/Person';
 import { Link,  useHistory} from 'react-router-dom';
 import { useContext, useRef, useState } from 'react';
 import { Context } from '../../Context/Context';
@@ -72,10 +73,11 @@ function Navbar() {
                 <img  src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} alt="" className="topbarImg"  />          
                 <ul className="topbarmenus">
                     <li>
+                    <PersonIcon className="icons"/>
                     <Link to={`/profile/${user.username}`} style={{textDecoration:"none"}}>Profile</Link> 
                     </li>
-                    <li onClick={Logout}>Logout</li>
-                    <li><Link to="/">Home</Link></li>
+                    <li onClick={Logout}><ExitToApp className="icons"/>Logout</li>
+                    <li><Home className="icons"/><Link to="/">Home</Link></li>
                 </ul>
                 
                 </div>
