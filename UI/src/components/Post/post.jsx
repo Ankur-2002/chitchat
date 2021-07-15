@@ -9,7 +9,7 @@ import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineO
 import {format} from 'timeago.js'
 import axios from 'axios' 
 import { Context } from '../../Context/Context';
-import $ from 'jquery'
+// import $ from 'jquery'
 const Post =({data}) =>{ 
     
     const [option ,setoption] = useState(false);
@@ -111,7 +111,7 @@ const Post =({data}) =>{
         
             <div className="postcenter">
             {
-            <img alt="sorry" className="centerimg" src={`http://localhost:3000/images/${data.img}`}></img>
+            <img alt="sorry" className="centerimg" src={`/images/${data.img}`}></img>
             }
             </div>
             <div className="postbottom">    

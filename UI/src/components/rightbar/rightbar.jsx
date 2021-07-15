@@ -4,14 +4,11 @@ import { friends } from "../sidebar/sidedata"
 import $ from 'jquery' 
 import { Context } from "../../Context/Context";
 import axios from "axios"; 
-function Rightbar({data}) {
- 
-   const {user , dispatch} = useContext(Context);  
-    
+function Rightbar({data}) { 
+   const {user , dispatch} = useContext(Context);   
    const [friend,setfriends] = useState([]);
    const [Follow,setFollow] = useState(false);
-
-//    console.log(user)
+ 
     useEffect(()=>{ 
     data && data._id !== user._id &&  setFollow(user.following.includes(data._id))  
     },[data])
