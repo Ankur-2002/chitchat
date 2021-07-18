@@ -17,7 +17,7 @@ import {  useParams } from 'react-router-dom'
 
     useEffect(()=>{
         const fetch_user = async()=>{
-            console.log(param)
+            // console.log(param)
             try {
              
             const user = await axios.get(`/api/user/get/?username=${param.username}`)
@@ -48,9 +48,19 @@ import {  useParams } from 'react-router-dom'
         <div className="profileinfo">
         <h4 className="info_name">{data.username}</h4>
         <span className="info_description">{data.desc}</span>
-        </div>
-
-
+        </div> 
+        <div className="counter">
+            <div className="following_count">
+            {data.following && <> <p>{data.following.length}</p>  
+                <p>Following</p>
+                </>
+            }
+            </div>
+            <div className="following_names">
+            <p>{data.followers &&  data.followers.length}</p>
+            <p>Followers</p>
+            </div>
+            </div>
         </div>
 
 

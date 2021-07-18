@@ -102,7 +102,7 @@ const PROFILE_BAR = () =>{
     return (<>
         {
          <>
-
+           
             {user.username !== data.username && <button className="follow_button" onClick={followHandler}>
             {(Follow) ? "Unfollow" : "Follow"}    
             </button>}
@@ -127,12 +127,12 @@ const PROFILE_BAR = () =>{
 
             {friend.length > 0 && friend.map((value , index)=>{
                 return (
-                <Link href={`/profile/${value.username}`} style={{color:"black",fontWeight:"500",textDecoration:"none"}}>
-                <div className="rightbarfollowings" key={value._id}>
+                <a href={`/profile/${value.username}`} style={{color:"black",fontWeight:"500",textDecoration:"none"}}>
+                <div className="rightbarfollowings" key={index}>
                  <img width="32" height="32" src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} alt="soory" className="following_img" />
-                 <span className="follwing_name"  >{value.username}</span>
+                 <span className="follwing_name">{value.username}</span>
                  </div> 
-                 </Link>
+                 </a>
                 
                 )
             })
