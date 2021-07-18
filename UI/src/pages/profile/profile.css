@@ -24,6 +24,24 @@
     height: 250px;
     object-fit: cover;
 }
+.edit_icon{
+    content: "";
+    position: absolute; 
+    width: 10px;
+    height: 10px;
+    top: 160px;
+    left: 100px;
+    right: 0px;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 30px;
+    color: rgb(218, 222, 226);
+    background-color: #5179ce;
+    border-radius: 10px;
+    margin: auto; 
+
+    z-index: 10000;
+}
 .profileImg{
     width: 150px;
     height: 150px;

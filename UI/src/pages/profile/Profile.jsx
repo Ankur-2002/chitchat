@@ -6,6 +6,7 @@ import Feed from '../../components/feed/feed';
 import './profile.css'
 import axios from 'axios';
 import {  useParams } from 'react-router-dom'
+import { Edit } from '@material-ui/icons';
  
  function Profile() {  
     
@@ -41,8 +42,9 @@ import {  useParams } from 'react-router-dom'
         <div className="profileright">
         <div className="profilerighttop">
         <div className="profilecover">
+            <Edit className="edit_icon"/>
             <img src={ process.env.PUBLIC_URL+"/assets/profile/f.jpg" } alt="sry" className="coverImg"/>
-            <img src={ process.env.PUBLIC_URL+"/assets/profile/b.jpg"} alt="sry" className="profileImg" />
+            <img  src={ process.env.PUBLIC_URL+"/assets/profile/b.jpg"} alt="sry" className="profileImg" />
         </div>
         
         <div className="profileinfo">
