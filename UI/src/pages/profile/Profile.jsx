@@ -1,4 +1,4 @@
-import  {useState,useEffect} from 'react'
+import  {useState,useEffect, useContext} from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/sidebar'
 import Rightbar from '../../components/rightbar/rightbar'
@@ -6,15 +6,17 @@ import Feed from '../../components/feed/feed';
 import './profile.css'
 import axios from 'axios';
 import {  useParams } from 'react-router-dom'
-import { Edit } from '@material-ui/icons';
+import { Cancel, Check, Edit } from '@material-ui/icons'; 
+import { Context } from '../../Context/Context'; 
  
  function Profile() {  
-    
+    const {user : User, dispatch}= useContext(Context);
     const param = useParams();  
-
+    
     const [data,setdata] = useState({}); 
-
- 
+    const [file , setfile] = useState(null);
+    
+    
 
     useEffect(()=>{
         const fetch_user = async()=>{
@@ -32,6 +34,27 @@ import { Edit } from '@material-ui/icons';
         fetch_user();
     },[param]);
 
+    const upload = async () =>{
+        const data = new FormData();
+        let fileName = Date.now()+file.name;
+        data.append("Fname",fileName);
+        data.append("file",file);
+
+        try {
+            const newuser  = User ;
+            newuser.profilePicture = fileName;
+            await axios.post('/api/upload',data)
+            .then(async(res)=>{  
+            await axios.put(`/api/user/${User._id}`,newuser);   
+            dispatch({type : "updateUser", newuser});
+            window.location.reload();
+            });
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    console.log(data.profilePicture)
     return (
         <>
         
@@ -42,9 +65,26 @@ import { Edit } from '@material-ui/icons';
         <div className="profileright">
         <div className="profilerighttop">
         <div className="profilecover">
-            <Edit className="edit_icon"/>
-            <img src={ process.env.PUBLIC_URL+"/assets/profile/f.jpg" } alt="sry" className="coverImg"/>
-            <img  src={ process.env.PUBLIC_URL+"/assets/profile/b.jpg"} alt="sry" className="profileImg" />
+           
+            
+            <div className="current_picture_profile">
+            {(file) && <>
+            <img src={URL.createObjectURL(file)}></img> 
+            {<Cancel style={{fontSize:"40px",color:"grey"}} onClick={()=>setfile(null)} className="cross_in_profile"/>}
+            {<Check onClick={upload} style={{fontSize:"30px"}}  className="tick_in_profile" />}
+            </>
+            }
+            </div>
+           {
+            (User.username === data.username)?
+            <label key="file"> 
+           <Edit className="edit_icon" style={{display : (file)?"none" : "block"}}/> 
+            <input type="file" accept=".png,.jpeg,.jpg" style={{display :"none"}} id="file" onChange={(img)=>setfile(img.target.files[0])}/>
+            </label>
+            : null
+            }
+            <img src={ process.env.PUBLIC_URL+`/assets/profile/user.png` } alt="sry" className="coverImg"/>
+            <img  src={ (data.profilePicture)?`/images/${data.profilePicture}` : process.env.PUBLIC_URL+"/assets/profile/user.png"} alt="sry" className="profileImg" />
         </div>
         
         <div className="profileinfo">

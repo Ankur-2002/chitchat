@@ -34,5 +34,10 @@ const UnFollow = (userId) =>{
         payload : userId
     })
 }
-
-export {START_LOGIN , IS_FETCH ,ERROR , Follow, UnFollow};
+const updateUser = (user) =>{
+    return ({
+        type : "userUpdate",
+        payload : user
+    });
+}
+export {START_LOGIN , IS_FETCH ,ERROR , Follow, UnFollow, updateUser};

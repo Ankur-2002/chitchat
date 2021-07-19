@@ -85,7 +85,7 @@ const Post =({data}) =>{
                     <div className="posttopleft">
                         
                         <Link to={`/profile/${info.username}`}>
-                        <img alt="sorry" className="posttopleftprofile"    src={(data.profile) ? process.env.PUBLIC_URL+data.profile :  process.env.PUBLIC_URL+"/assets/profile/a.jpg"} />
+                        <img alt="sorry" className="posttopleftprofile" src={(info.profilePicture !== "") ? `/images/${info.profilePicture}` :  process.env.PUBLIC_URL+"/assets/profile/user.png"} />
                         </Link>
                         
                         <div className="postleftnames">

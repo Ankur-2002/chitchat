@@ -27,6 +27,11 @@ const Reducer =  (initial_state , action) => {
                 following : [...initial_state.user.following, action.payload]
             }
         });
+        case "updateUser":
+            return ({
+                user : action.payload
+            });
+
         case "UnFollow":
             return ({
                 ...initial_state,

@@ -70,7 +70,7 @@ function Navbar() {
                 <div className="topbarIcons">
                 
                 <div className="topbarIconitems" onClick={show}>
-                <img  src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} alt="" className="topbarImg"  />          
+                <img  src={user.profilePicture} alt="" className="topbarImg"  />          
                 <ul className="topbarmenus">
                     <li>
                     <PersonIcon className="icons"/>
