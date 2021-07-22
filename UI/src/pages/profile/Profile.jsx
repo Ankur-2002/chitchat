@@ -12,7 +12,7 @@ import { Context } from '../../Context/Context';
  function Profile() {  
     const {user : User, dispatch}= useContext(Context);
     const param = useParams();  
-    
+    console.log(param);
     const [data,setdata] = useState({}); 
     const [file , setfile] = useState(null);
     
