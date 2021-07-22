@@ -35,26 +35,25 @@ import { Context } from '../../Context/Context';
     },[param]);
 
     const upload = async () =>{
-        const data = new FormData();
+        const Data = new FormData();
         let fileName = Date.now()+file.name;
-        data.append("Fname",fileName);
-        data.append("file",file);
+        Data.append("Fname",fileName);
+        Data.append("file",file);
 
         try {
             const newuser  = User ;
             newuser.profilePicture = fileName;
-            await axios.post('/api/upload',data)
+            await axios.post('/api/upload',Data)
             .then(async(res)=>{  
             await axios.put(`/api/user/${User._id}`,newuser);   
-            dispatch({type : "updateUser", newuser});
+            // await  dispatch({type : "updateUser", newuser});
             window.location.reload();
             });
 
         } catch (error) {
-            console.log(error)
+            window.history.back('/')
         }
-    }
-    console.log(data.profilePicture)
+    } 
     return (
         <>
         

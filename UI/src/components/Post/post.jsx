@@ -12,7 +12,7 @@ import {format} from 'timeago.js'
 import axios from 'axios' 
 import { Context } from '../../Context/Context';
 import { Person, Share } from '@material-ui/icons';
-// import $ from 'jquery'
+
 const Post =({data}) =>{ 
     
     const [option ,setoption] = useState(false);
@@ -99,7 +99,7 @@ const Post =({data}) =>{
                     <MoreHorizIcon className="verticalicon" id="verticalicon" onClick={Showuser}/>:<ClearIcon className="verticalicon" onClick={Showuser}/>
                     }<div className="optionsforpost" >
                         <ul className="ulforpost" style={{display : (!option) ? "none" : "block"}}>
-                            <li onClick={Delete}><DeleteIcon/>Delete</li>
+                            {user._id === info._id && <li onClick={Delete}><DeleteIcon/>Delete</li>}
                             <li onClick={Showuser}><Person/><Link to={`/profile/${info.username}`} >Profile</Link></li>
                             <li onClick={Showuser}><Share/>Share</li> 
                         </ul>

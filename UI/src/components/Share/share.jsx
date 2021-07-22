@@ -11,7 +11,12 @@ function Share() {
     const des = useRef();  
     const send = async (e) =>{
         e.preventDefault();
-    
+        if(des.current.value === "" && file === null)
+        {
+            alert("Empty post Not allowed");    
+            return ;
+        }
+
         const post = {
             userId : user._id,
             desc : des.current.value,  
