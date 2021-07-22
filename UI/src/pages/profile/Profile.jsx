@@ -12,7 +12,7 @@ import { Context } from '../../Context/Context';
  function Profile() {  
     const {user : User, dispatch}= useContext(Context);
     const param = useParams();  
-    console.log(param);
+    console.log(param.username);
     const [data,setdata] = useState({}); 
     const [file , setfile] = useState(null);
     
@@ -46,8 +46,8 @@ import { Context } from '../../Context/Context';
             await axios.post('/api/upload',Data)
             .then(async(res)=>{  
             await axios.put(`/api/user/${User._id}`,newuser);   
-            // await  dispatch({type : "updateUser", newuser});
-            window.location.reload();
+            await  dispatch({type : "updateUser", newuser});
+            window.location.href("/")
             });
 
         } catch (error) {
