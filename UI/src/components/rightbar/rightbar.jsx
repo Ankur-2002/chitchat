@@ -3,8 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { friends } from "../sidebar/sidedata"
 import $ from 'jquery' 
 import { Context } from "../../Context/Context";
-import axios from "axios"; 
-import { Link } from "react-router-dom";
+import axios from "axios";  
 function Rightbar({data}) { 
    const {user , dispatch} = useContext(Context);   
    const [friend,setfriends] = useState([]);

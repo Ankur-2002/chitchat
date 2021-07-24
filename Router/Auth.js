@@ -22,26 +22,15 @@ router.post('/register', async (req,res)=>{
     } 
 })
 
-router.get('/register/like',(req,res)=>{
-    // console.log(req);
-
-    res.json({
-        Ankur : "login succesfully"
-    })
-})
-
 // login
 router.post('/login', async (req,res) =>{
-    console.log(req.body);
   
     try{
 
-    const user = await Client.findOne({ username : req.body.username});
-    // console.log(user)
+    const user = await Client.findOne({ username : req.body.username}); 
     if(user !== null){
-      //  decrypt password  
-    const news = await bcrypt.compare(req.body.password,user.password)
-    
+    const news = bcrypt.compare(req.body.password,user.password);
+    //  decrypt password   
     if(!news)
     res.status(505).send("Wrong Password");
     

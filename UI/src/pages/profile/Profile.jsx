@@ -12,7 +12,7 @@ import { Context } from '../../Context/Context';
  function Profile() {  
     const {user : User, dispatch}= useContext(Context);
     const param = useParams();  
-    console.log(param.username);
+    // console.log(param.username);
     const [data,setdata] = useState({}); 
     const [file , setfile] = useState(null);
     
@@ -46,8 +46,9 @@ import { Context } from '../../Context/Context';
             await axios.post('/api/upload',Data)
             .then(async(res)=>{  
             await axios.put(`/api/user/${User._id}`,newuser);   
-            await  dispatch({type : "updateUser", newuser});
-            window.location.href("/")
+            dispatch({type : "updateUser", payload : newuser});
+            setfile(null)
+            // // window.location.reload()
             });
 
         } catch (error) {
@@ -75,7 +76,7 @@ import { Context } from '../../Context/Context';
             }
             </div>
            {
-            (User.username === data.username)?
+            User && data && (User.username === data.username)?
             <label key="file"> 
            <Edit className="edit_icon" style={{display : (file)?"none" : "block"}}/> 
             <input type="file" accept=".png,.jpeg,.jpg" style={{display :"none"}} id="file" onChange={(img)=>setfile(img.target.files[0])}/>
