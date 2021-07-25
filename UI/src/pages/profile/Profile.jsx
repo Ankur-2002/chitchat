@@ -46,7 +46,8 @@ import { Context } from '../../Context/Context';
             await axios.post('/api/upload',Data)
             .then(async(res)=>{  
             await axios.put(`/api/user/${User._id}`,newuser);   
-            dispatch({type : "updateUser", payload : newuser});
+            console.log(fileName)
+            dispatch({type : "updateUser", payload : fileName});
             setfile(null)
             });
 

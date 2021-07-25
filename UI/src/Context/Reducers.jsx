@@ -27,9 +27,20 @@ const Reducer =  (initial_state , action) => {
                 following : [...initial_state.user.following, action.payload]
             }
         });
-        case "updateUser":
+        case "updateUser": 
+            window.localStorage.setItem("user",JSON.stringify({
+                ...initial_state,
+                user : {
+                   ...initial_state.user,
+                   profilePicture:action.payload,
+                }
+            }));
             return ({
-                user : action.payload
+                ...initial_state,
+                user : {
+                   ...initial_state.user,
+                   profilePicture:action.payload,
+                }
             });
 
         case "UnFollow":

@@ -68,7 +68,7 @@ function Navbar() {
                 
                 
                 <div className="topbarIcons">
-                
+                {console.log(user)}
                 <div className="topbarIconitems" onClick={show}>
                 <img  src={"/images/"+user.profilePicture} alt="" className="topbarImg"  />          
                 <ul className="topbarmenus">
