@@ -29,7 +29,6 @@ const Reducer =  (initial_state , action) => {
         });
         case "updateUser":
             return ({
-                ...initial_state.user,
                 user : action.payload
             });
 

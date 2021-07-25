@@ -48,7 +48,6 @@ import { Context } from '../../Context/Context';
             await axios.put(`/api/user/${User._id}`,newuser);   
             dispatch({type : "updateUser", payload : newuser});
             setfile(null)
-            // // window.location.reload()
             });
 
         } catch (error) {
@@ -69,7 +68,7 @@ import { Context } from '../../Context/Context';
             
             <div className="current_picture_profile">
             {(file) && <>
-            <img src={URL.createObjectURL(file)}></img> 
+            <img src={URL.createObjectURL(file)} alt="IMG"></img> 
             {<Cancel style={{fontSize:"40px",color:"grey"}} onClick={()=>setfile(null)} className="cross_in_profile"/>}
             {<Check onClick={upload} style={{fontSize:"30px"}}  className="tick_in_profile" />}
             </>

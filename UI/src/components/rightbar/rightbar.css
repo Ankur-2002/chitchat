@@ -6,6 +6,26 @@
     /* overflow-y: scroll; */
     
 } 
+.profile_view{ 
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right : 0;
+}
+.cross_in_profile_view{
+    position: absolute; 
+    margin: auto;
+    left: 0; 
+    color: #1872f2;
+    right: 0px;
+    cursor: pointer;
+
+}
+.profile_enlarge{
+    width: 100%;
+    object-fit: contain;
+    height: 95vh;
+}
 @media (max-width : 450px) {
     .rightbar{
         display: none;

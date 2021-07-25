@@ -55,7 +55,7 @@ function Share() {
             <hr className="shareHr"></hr>
             {(file)? (
                 <div className="shareImg">
-                <img  src={URL.createObjectURL(file)}></img>
+                <img  src={URL.createObjectURL(file)} alt="sorry"></img>
                 <Cancel className="Sharing_cancel" onClick={()=>setfile(null)}/>
                 </div>
             ): null}

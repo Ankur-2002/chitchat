@@ -4,14 +4,15 @@ import { friends } from "../sidebar/sidedata"
 import $ from 'jquery' 
 import { Context } from "../../Context/Context";
 import axios from "axios";  
+import { Cancel } from "@material-ui/icons";
 function Rightbar({data}) { 
    const {user , dispatch} = useContext(Context);   
    const [friend,setfriends] = useState([]);
    const [Follow,setFollow] = useState(false);
- 
+   const [large , setlarge] = useState(null);
     useEffect(()=>{ 
     data && data._id !== user._id &&  setFollow(user.following.includes(data._id))  
-    },[data])
+    },[data?._id,data,user]);
     
    useEffect(()=>{
     const fetch = async ()=>{  
@@ -50,28 +51,44 @@ function Rightbar({data}) {
         } catch (error) {
             
         }
-    }
+    }   
+    const enlarge = (img) =>{
+        if(large === null)
+        { 
+            setlarge(img)
+        }else
+        { 
+            setlarge(null)     
+        }
 
+    }
     const HOME_RIGHT_BAR = () =>{
         return (<>
+        {
+        (large) && 
+        <div className="profile_view">
+        <img src={'/images/'+large} alt="" className="profile_enlarge"/>
+        <Cancel className="cross_in_profile_view" onClick={enlarge}></Cancel>
+        </div>  
+        }
         <div className="topstatus" >
 
-          
+            {console.log(user.profilePicture)}
 
         <div className="mystatus">
-            <img src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} width="32" height="32" className="status_img_user" alt="new" />
+            <img src={user.profilePicture ? `/images/${user.profilePicture}` : process.env.PUBLIC_URL+"/assets/profile/user.jpg"} width="32" height="32" className="status_img_user" alt="new" />
             <span className="mytext">My Story</span>
         </div>
             
         <hr className="separater"/>
         <div className="All_stories" onClick={hide_all}><span>All stories</span></div>
-
+       
         <div className="friend_status">
-
+        
         {friend.length > 0 && friend.map((value , index)=>{
                 return (
-                <div className="rightbarfollowings" key={value._id}>
-                 <img width="32" height="32" src={process.env.PUBLIC_URL+"/assets/profile/a.jpg"} alt="soory" className="following_img" />
+                <div className="rightbarfollowings" key={value._id} onClick={()=>enlarge(value.profilePicture)} >
+                 <img width="32" height="32" src={ value.profilePicture ? `/images/${value.profilePicture}` : process.env.PUBLIC_URL+"/assets/profile/user.png"} alt="soory" className="following_img" />
                  <span className="follwing_name"  >{value.username}</span>
                  </div>  
                 )

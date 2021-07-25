@@ -3,7 +3,7 @@ import './navbar.css';
 import {Search, Person, Chat,ExitToApp,Home,Notifications} from '@material-ui/icons'
 import PersonIcon from '@material-ui/icons/Person';
 import { Link,  useHistory} from 'react-router-dom';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Context } from '../../Context/Context';
 import $ from 'jquery'; 
 
