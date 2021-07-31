@@ -10,11 +10,11 @@ function Home() {
     // const {user} = useContext(Context)
     return (
         <> 
-            <Navbar />
+            <Navbar key={'Navbar_from_home'}/>
             <div className="container">
-            <Sidebar className="side" />
-            <Feed/>
-            <Rightbar className="right" />
+            <Sidebar className="side" key={'Sidebar_from_home'}/>
+            <Feed key={'feed_form_home'}/>
+            <Rightbar className="right" key={'Right_bar_from_Home'} />
                    </div>
              </>
     )

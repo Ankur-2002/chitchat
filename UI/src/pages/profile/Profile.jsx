@@ -46,7 +46,7 @@ import { Context } from '../../Context/Context';
             await axios.post('/api/upload',Data)
             .then(async(res)=>{  
             await axios.put(`/api/user/${User._id}`,newuser);   
-            console.log(fileName)
+            // console.log(fileName)
             dispatch({type : "updateUser", payload : fileName});
             setfile(null)
             });
@@ -59,9 +59,9 @@ import { Context } from '../../Context/Context';
         <>
         
        <>
-       <Navbar></Navbar>
+       <Navbar Key={"Navbar_from_Profile_bar"}></Navbar>
         <div className="profile">
-        <Sidebar/> 
+        <Sidebar Key={"Sidebar_from_profile_bar"}/> 
         <div className="profileright">
         <div className="profilerighttop">
         <div className="profilecover">
@@ -107,8 +107,8 @@ import { Context } from '../../Context/Context';
 
 
         <div className="profilerightbottom">
-            <Feed username={data.username}/>
-            <Rightbar data={data} /> 
+            <Feed username={data.username} Key={"Feed_from_Profile_bar"}/>
+            <Rightbar data={data} Key={"Right_from_Profile_bar"} /> 
         </div>
         
         

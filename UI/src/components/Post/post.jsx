@@ -13,8 +13,9 @@ import axios from 'axios'
 import { Context } from '../../Context/Context';
 import { Person, Share } from '@material-ui/icons';
 
-const Post =({data}) =>{ 
-    
+const Post =(Data) =>{ 
+    const data = {...Data.data};
+    // console.log(data)
     const [option ,setoption] = useState(false);
     const {user} = useContext(Context);
     const [info , setinfo] = useState({});
@@ -29,7 +30,7 @@ const Post =({data}) =>{
             setinfo(update.data); 
         }
         fetch_data();
-    },[data.userId]) 
+    },[]) 
     
     const Delete = async() =>{
         // console.log(data._id)

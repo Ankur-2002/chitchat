@@ -31,16 +31,17 @@ function Share() {
             // data.forEach((e)=>console.log(e))
             try {
                await axios.post('/api/upload',data);
+               window.location.replace('/')
             } catch (error) {
-                console.log(error)
+                // console.log(error)
             }
         }
 
         try {
            await axios.post('/api/post',post); 
-            window.location.reload()
+            // window.location.replace("/")
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
 
     }   
