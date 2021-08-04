@@ -1,4 +1,6 @@
-import {createContext, useReducer} from 'react';
+
+import {createContext, useCallback, useEffect, useReducer} from 'react';
+// import CallsServer from '../CallsServer';
 import Reducers from './Reducers';
 const intial_state = {
     user: (JSON.parse(localStorage.getItem("user")) === null) ? null : JSON.parse(localStorage.getItem("user")),
@@ -9,13 +11,16 @@ const intial_state = {
 const Context = createContext(intial_state);
 
 
-const ContextProvider = ({children}) =>{
+const ContextProvider = (props) =>{
+
+    
 
     const [state , dispatch] = useReducer(Reducers,intial_state);
-    console.log(state.user.data)
+    console.log(state.user)
+   
      return (
-        <Context.Provider value={{user : state.user.data, error : state.error , waiting : state.waiting, dispatch}}>
-            {children}
+        <Context.Provider value={{user : state.user ? state.user.data : null, error : state.error , waiting : state.waiting, dispatch}}>
+            {props.children}
         </Context.Provider>
     )
 }

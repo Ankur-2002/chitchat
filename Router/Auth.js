@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const Client = require('../models/user')
-const bcrypt = require('bcrypt');   
-// register new user
+const bcrypt = require('bcrypt');    
+
 router.post('/register', async (req,res)=>{ 
     try{
-        // console.log(1)
-        // password encrypt
+        console.log(req.body)
         const password = await bcrypt.hash(req.body.password,10);
         // new user
         const User = await new Client({
@@ -25,8 +24,7 @@ router.post('/register', async (req,res)=>{
 // login
 router.post('/login', async (req,res) =>{
   
-    try{
-
+    try{ 
     const user = await Client.findOne({ username : req.body.username}); 
     if(user !== null){
     const news = bcrypt.compare(req.body.password,user.password);

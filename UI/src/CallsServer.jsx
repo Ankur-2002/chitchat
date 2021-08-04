@@ -2,14 +2,12 @@ import axios from "axios";
 
 const CallsServer = async (user , dispatch) =>{
 
-    await dispatch({type : "START_LOGIN"});
-
+    await dispatch({type : "START_LOGIN"}); 
     try {    
         
-       const res = await axios.post('/api/auth/login',user);  
-       
+       const res = await axios.post('/api/auth/login',user);   
        localStorage.setItem("user",JSON.stringify(res));
-       await dispatch({type : "FETCHING_SUCCESSFULL", payload : res.data});  
+       dispatch({type : "FETCHING_SUCCESSFULL", payload : res});  
 
     } catch (error) {
         dispatch({type : "Error", payload : error})

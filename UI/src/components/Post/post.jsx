@@ -15,7 +15,7 @@ import { Person, Share } from '@material-ui/icons';
 
 const Post =(Data) =>{ 
     const data = {...Data.data};
-    // console.log(data)
+    // console.log(Data)
     const [option ,setoption] = useState(false);
     const {user} = useContext(Context);
     const [info , setinfo] = useState({});
@@ -35,7 +35,7 @@ const Post =(Data) =>{
     const Delete = async() =>{
         // console.log(data._id)
         try {
-            await axios.delete(`/api/post/${data._id}/delete/${user._id}`);                
+                          
             if(!option){
                 setoption(true)
             }
@@ -43,7 +43,9 @@ const Post =(Data) =>{
             {
                 setoption(false)
             }
-            window.location.reload()
+            // Data.event((value)=>
+            //  {console.log(value + "mew")});
+            await axios.delete(`/api/post/${data._id}/delete/${user._id}`); 
         } catch (error) {
             console.log(error)
         }

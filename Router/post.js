@@ -8,7 +8,7 @@ const fs = require('fs')
 router.post('/', async (req,res)=>{
   
 const newpost = await new Post(req.body); 
- 
+
 try{
    await newpost.save();
     res.status(200).json(newpost)

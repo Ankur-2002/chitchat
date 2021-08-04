@@ -1,12 +1,21 @@
-const Reducer =  (initial_state , action) => {
-
+const Reducer =  (initial_state , action) => { 
     switch(action.type){
-        case "START_LOGIN":
-            return ({
+        case "START_LOGIN":  
+            return({
                 user : null,
                 waiting : true,
                 error:false
             });
+        case "Register" :  
+        console.log(action.payload)
+        window.localStorage.setItem("user",JSON.stringify( 
+            action.payload
+         ))
+        return ({
+            user : action.payload,
+            waiting: false,
+            error : false
+        });
         case "FETCHING_SUCCESSFULL":
             return  ({
                 user : action.payload,

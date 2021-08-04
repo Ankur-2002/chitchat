@@ -26,8 +26,8 @@ function Feed(props) {
                 {(!props.username || props.username === user.username) ? <Share /> : null}
                       
                     { 
-                       data.map((value,index)=>{
-                             return  <Post data={value} key={value._id}/>
+                      data.length > 0 && data.map((value,index)=>{
+                             return  <Post data={value} key={index} event={setdata}/>
                          })
                     }
                     

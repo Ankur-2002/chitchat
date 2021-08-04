@@ -1,20 +1,30 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useContext } from 'react'
 import {Link,  useHistory} from 'react-router-dom'
+import { Context } from '../../Context/Context'
 const Register = () =>{
-  
- const history = useHistory();
-
+   
+    const {dispatch} = useContext(Context);
+    console.log(dispatch)
     const Submit =  async (e) =>{
-        e.preventDefault()
-        const user = {
-        username : document.getElementById('username').value,
-        password : document.getElementById('password').value,
-        email : document.getElementById("email").value
+        
+        e.preventDefault();
+        try {
+            const user = {
+                username : document.getElementById('username').value,
+                password : document.getElementById('password').value,
+                email : document.getElementById("email").value
+                };
+                if(user.username.trim().length === 0 || user.password.trim().length === 0 || user.email.trim().length === 0)
+                return ;
+                const response = await axios.post('/api/auth/register',user);
+                console.log(response)
+                dispatch({type : "Register",payload : response})
+        } catch (error) {
+            console.log(error)
         }
-        await axios.post('/api/auth/register',user);
-        history.push("/login")
-        }
+        
+    }
 
        return (
         <div className="login">
