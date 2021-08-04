@@ -1,27 +1,35 @@
 import axios from 'axios'
 import React, { useContext } from 'react'
-import {Link,  useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { Context } from '../../Context/Context'
 const Register = () =>{
    
     const {dispatch} = useContext(Context);
-    console.log(dispatch)
+    // console.log(dispatch)
     const Submit =  async (e) =>{
         
         e.preventDefault();
         try {
             const user = {
-                username : document.getElementById('username').value,
-                password : document.getElementById('password').value,
-                email : document.getElementById("email").value
+                username : document.getElementById('username').value.trim(),
+                password : document.getElementById('password').value.trim(),
+                email : document.getElementById("email").value.trim()
                 };
                 if(user.username.trim().length === 0 || user.password.trim().length === 0 || user.email.trim().length === 0)
                 return ;
+
+                if(user.password.length < 6)
+                {
+                    console.log(user.password)
+                    alert('Password Too Small')
+                    return ; 
+                }
+
                 const response = await axios.post('/api/auth/register',user);
-                console.log(response)
+              
                 dispatch({type : "Register",payload : response})
         } catch (error) {
-            console.log(error)
+            alert("Something went Wrong");   
         }
         
     }

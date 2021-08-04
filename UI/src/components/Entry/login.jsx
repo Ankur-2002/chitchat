@@ -12,8 +12,8 @@ const Login =() =>{
    
     var username = document.getElementById('username').value
     var password = document.getElementById("password").value;
-    var email = document.getElementById("email").value;
-    await CallsServer({username : username,password : password,email : email},dispatch);
+    // var email = document.getElementById("email").value;
+    await CallsServer({username : username,password : password},dispatch);
     }
  
     return (
@@ -30,11 +30,7 @@ const Login =() =>{
  
             <input type="text" id="username" placeholder="Username" name="username" />
          
-            <input type="password" id="password" placeholder="Password"  name="password" />
-        
-            <input type="email" placeholder="Email"  id="email"/>
-      
-
+            <input type="password" id="password" placeholder="Password"  name="password" /> 
        
             <button className="loginbutton" disabled={waiting} onClick={Submit}>{waiting ? "LOADING": "LOG IN"}</button> 
                 <span className="loginregisterbutton"><Link to="/register">Forgot Password ?</Link></span> 

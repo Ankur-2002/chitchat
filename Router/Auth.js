@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 router.post('/register', async (req,res)=>{ 
     try{
-        console.log(req.body)
+         
         const password = await bcrypt.hash(req.body.password,10);
         // new user
         const User = await new Client({
@@ -12,6 +12,9 @@ router.post('/register', async (req,res)=>{
             password : password,
             email : req.body.email,
         });
+
+        
+
         const user = await User.save();
         res.status(200).json(user)
     }
@@ -32,8 +35,8 @@ router.post('/login', async (req,res) =>{
     if(!news)
     res.status(505).send("Wrong Password");
     
-    else if(user.email !== req.body.email)
-    res.status(505).json("Wrong Email")
+    // else if(user.email !== req.body.email)
+    // res.status(505).json("Wrong Email")
     // wrong password
 
     else
