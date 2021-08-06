@@ -85,7 +85,7 @@ router.delete('/:postId/delete/:userId', async (req,res)=>{
         if(Findpost.userId === req.params.userId)
         {
              fs.rm(`./server/images/${Findpost.img}`,(err)=>{
-                console.log(err)
+                // console.log(err)
             });
             await Post.findByIdAndDelete(req.params.postId);
 
@@ -96,7 +96,8 @@ router.delete('/:postId/delete/:userId', async (req,res)=>{
             res.status(200).json("Your are not the owner of this post")    
         }
     } catch (error) {
-        console.log(error)
+        res.status.json("Not Successfull")
+        // console.log(error)
     }
 })
 

@@ -6,7 +6,7 @@ const { rm } = require('fs');
 
 // update user
 router.put('/:id',async (req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
     if(req.body._id === req.params.id || req.body.isAdmin)
     {
         if(req.body.password){
@@ -19,7 +19,7 @@ router.put('/:id',async (req,res)=>{
         }
         try{
             const user = await User.findById(req.params.id);
-            console.log(user);
+            // console.log(user);
             fs.rm(`./server/images/${user.profilePicture}`,(err)=>{
                 console.log(err);
             });
@@ -62,7 +62,7 @@ router.delete('/:id',async (req,res)=>{
 router.get('/get/' , async (req,res)=>{
     const userId = req.query.userId;
     const username = req.query.username;
-    console.log(1111111111111111111)
+    // console.log(1111111111111111111)
     try{
         const user = userId ? 
         await User.findById(userId) :
@@ -78,8 +78,8 @@ router.get('/get/' , async (req,res)=>{
 // get all friends
 
 router.get('/allfriends/:userId',async (req,res)=>{
-    console.log(22222222222222222222222)
-    console.log(req.body)
+    // console.log(22222222222222222222222)
+    // console.log(req.body)
     try{
         const UserId = req.params.userId;
         const friends = await User.findById(UserId);
@@ -103,8 +103,8 @@ router.get('/allfriends/:userId',async (req,res)=>{
 
 // Follow a User
 router.put('/:id/follow', async(req,res)=>{
-    console.log(req.body.userId)
-    console.log(req.params.id) 
+    // console.log(req.body.userId)
+    // console.log(req.params.id) 
     if(req.body.userId !== req.params.id)
     {
         try {
@@ -122,7 +122,8 @@ router.put('/:id/follow', async(req,res)=>{
             res.status(403).json("you already follow this user");
         }
         } catch (error) {
-            console.log(error)         
+            res.status(404).json("NOT SUCCESS")
+            // console.log(error)         
         }}
     else
     {
@@ -155,7 +156,7 @@ router.put('/:id/unfollow', async (req,res)=>{
         }
         else
         {
-            console.log("You cannot unfollow Yourself")
+            // console.log("You cannot unfollow Yourself")
         }
 })
 

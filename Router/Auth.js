@@ -48,8 +48,9 @@ router.post('/login', async (req,res) =>{
     }
     catch(err)
     {
+        res.staus(505).json(err)
         
-        console.log(err);
+        // console.log(err);
     }
 })
 module.exports = router;
