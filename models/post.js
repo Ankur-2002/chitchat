@@ -1,23 +1,24 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const PostSchema = new mongoose.Schema({
-userId : {
-    type : String,
-    required : true,
-},
-desc:{
-    type : String,
-    max : 500,
-},
-img:{
-   type : String, 
-},
-likes:{
-    type : Array,
-    default:[]
-},
+const PostSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      max: 500,
+    },
+    img: {
+      type: String,
+    },
+    likes: {
+      type: Array,
+      default: [],
+    },
+  },
+  { timestamps: true }
+);
 
-    
-},{timestamps:true});
-
-module.exports = mongoose.model('Chitchat_post',PostSchema);
+module.exports = mongoose.model('Chitchat_post', PostSchema);

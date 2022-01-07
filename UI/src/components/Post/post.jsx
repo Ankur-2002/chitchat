@@ -138,11 +138,7 @@ const Post = Data => {
 
         <div className="postcenter">
           {data.img ? (
-            <img
-              alt="sorry"
-              className="centerimg"
-              src={`/images/${data.img}`}
-            ></img>
+            <img alt="sorry" className="centerimg" src={`${data.img}`}></img>
           ) : null}
         </div>
         <div className="postbottom">

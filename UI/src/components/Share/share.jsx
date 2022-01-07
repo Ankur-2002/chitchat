@@ -20,22 +20,25 @@ function Share() {
     const post = {
       userId: user._id,
       desc: des.current.value,
+      img: file,
     };
-    if (file) {
-      const data = new FormData();
-      let fileName = Date.now() + file.name;
-      data.append('Fname', fileName);
-      data.append('file', file);
-      post.img = fileName;
-      // data.forEach((e)=>console.log(e))
-      try {
-        await axios.post('/api/upload', data);
-      } catch (error) {
-        // console.log(error)
-      }
-    }
+    des.current.value = '';
+    // if (file) {
+    //   const data = new FormData();
+    //   let fileName = Date.now() + file.name;
+    //   data.append('Fname', fileName);
+    //   data.append('file', file);
+    //   post.img = file;
+    //   // data.forEach((e)=>console.log(e))
+    //   try {
+    //     await axios.post('/api/upload', data);
+    //   } catch (error) {
+    //     // console.log(error)
+    //   }
+    // }
 
     try {
+      console.log(post);
       await axios.post('/api/post', post);
       // window.location.replace("/")
       UseHistory.push('/');
@@ -43,7 +46,13 @@ function Share() {
       // console.log(error)
     }
   };
+  const car = img => {
+    var file = new FileReader();
+    file.addEventListener('load', () => console.log(file.result));
+    file.readAsDataURL(img.target.files[0]);
 
+    // console.log(file.readAsDataURL(img.target.files[0]));
+  };
   return (
     <div className="share">
       <div className="sharewrapper">
@@ -62,7 +71,7 @@ function Share() {
         <hr className="shareHr"></hr>
         {file ? (
           <div className="shareImg">
-            <img src={URL.createObjectURL(file)} alt="sorry"></img>
+            <img src={file} alt="sorry"></img>
             <Cancel className="Sharing_cancel" onClick={() => setfile(null)} />
           </div>
         ) : null}
@@ -76,7 +85,16 @@ function Share() {
                 accept=".png,.jpeg,.jpg"
                 style={{ display: 'none' }}
                 id="file"
-                onChange={img => setfile(img.target.files[0])}
+                onChange={img => {
+                  setfile(img.target.files[0]);
+                  var file = new FileReader();
+                  file.addEventListener('load', () => {
+                    console.log(file.result);
+                    setfile(file.result);
+                  });
+                  file.readAsDataURL(img.target.files[0]);
+                  // setfile(img.target.files[0]);
+                }}
               ></input>
             </label>
             <div className="shareoption">

@@ -30,7 +30,7 @@ function Feed(props) {
 
         {data.length > 0 &&
           data.map((value, index) => {
-            return <Post data={value} key={index} event={setdata} />;
+            return <Post data={value} key={value._id} event={setdata} />;
           })}
       </div>
     </div>
